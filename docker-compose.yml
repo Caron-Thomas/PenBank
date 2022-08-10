@@ -9,8 +9,6 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - '5432:5432'
-    volumes:
-      - /Users/william/classes/lets_code/turma_sinqia_845/postgres_data:/var/lib/postgresql/data 
     networks:
       - postgres-sinqia-845-network
 
@@ -23,8 +21,6 @@ services:
       - "2345:80"
     depends_on:
       - postgres-sinqia-845
-    volumes:
-      - /Users/william/classes/lets_code/turma_sinqia_845/pgadmin_data:/var/lib/pgadmin/storage
     networks:
       - postgres-sinqia-845-network
 
