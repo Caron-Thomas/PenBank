@@ -130,8 +130,8 @@ ALTER TABLE conta
 	ADD CONSTRAINT FK_gerente_de_conta
 	FOREIGN KEY (id_gerente_de_conta) REFERENCES gerente_de_conta(id);
 
-ALTER TABLE operacoes
-	ADD COLUMN  
+--ALTER TABLE operacoes
+--	ADD COLUMN   (em edição para anexar histórico das transações de mesmo banco)
 	
 	
 	
