@@ -131,13 +131,41 @@ ALTER TABLE conta
 	FOREIGN KEY (id_gerente_de_conta) REFERENCES gerente_de_conta(id);
 
 ALTER TABLE operacoes
-	ADD COLUMN  
+	ADD COLUMN id_servico_origem INTEGER;
+
+ALTER TABLE operacoes
+	ADD COLUMN id_financeiro_origem INTEGER;
 	
+ALTER TABLE operacoes
+	ADD CONSTRAINT fk_operacao_origem
+	FOREIGN KEY (id_servico_origem, id_financeiro_origem) 
+	REFERENCES operacoes(id_servico, id_financeiro);
+
+ALTER TABLE operacoes --Executado. 
+DROP CONSTRAINT fk_operacao_origem;
+
+ALTER TABLE operacoes
+	DROP CONSTRAINT operacoes_pkey;
 	
+ALTER TABLE operacoes
+	ADD COLUMN id SERIAL NOT NULL;
+ALTER TABLE operacoes
+	ADD CONSTRAINT operacoes_pkey
+	PRIMARY KEY (id);
 	
-	
-	
-	
+ALTER TABLE operacoes
+	DROP COLUMN id_financeiro_origem;
+ALTER TABLE operacoes
+	DROP COLUMN id_servico_origem;
+
+ALTER TABLE operacoes
+	ADD COLUMN id_origem INTEGER;
+ALTER TABLE operacoes
+	ADD CONSTRAINT fk_id_origem
+	FOREIGN KEY(id_origem) REFERENCES operacoes(id);
+
+ALTER TABLE servicos
+	ADD COLUMN tarifa NUMERIC(12,6);
 	
 	
 	

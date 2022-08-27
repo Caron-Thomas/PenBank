@@ -249,6 +249,15 @@ LIMIT 10;
 SELECT * FROM clientes_top_gastos OFFSET 0 LIMIT 5;
 SELECT * FROM clientes_top_gastos OFFSET 5 LIMIT 5;
 
+SELECT cpf FROM CLIENTE WHERE cpf = '00000000006';
+CREATE UNIQUE INDEX idx_cliente_cpf ON cliente(cpf);
+DROP INDEX idx_cliente_cpf;
+
+CREATE INDEX idx_pedido_cliente ON pedido(id_cliente);
+CREATE INDEX idx_pedido_meio_pagamento ON pedido USING BTREE(id_meio_pagamento);
+DROP INDEX idx_pedido_meio_pagamento;
+CREATE INDEX idx_pedido_previsao ON pedido(numero, previsao_entrega);
+DROP INDEX idx_pedido_previsao;
 
 	
 
